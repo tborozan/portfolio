@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Home.Models;
-
 namespace Portfolio.Home.Pages;
+
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Models;
 
 public class IndexModel : PageModel
 {
@@ -123,16 +123,16 @@ public class IndexModel : PageModel
                 Technologies = ["Azure Pipelines", "Docker", "SonarQube Cloud", "Azure Container Registry", "Azure App Service"]
             }
         ];
-        
+
         DemoProjects =
         [
             new ProjectItem
             {
                 Title = "Url Shortener",
                 Description = "A simple and minimal url shortening service.",
-                ProjectUrl = null,
+                ProjectUrl = "share.borozan.dev",
                 Technologies = [".NET 10", "Razor Pages", "SQLite"]
-            },
+            }
         ];
 
         Skills.AdditionalSpecializations =

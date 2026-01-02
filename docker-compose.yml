@@ -1,12 +1,18 @@
-services:
-  portfolio.reverseproxy:
-    image: portfolio.reverseproxy
-    build:
-      context: .
-      dockerfile: Portfolio.ReverseProxy/Dockerfile
 
+services:
   portfolio.home:
     image: portfolio.home
     build:
       context: .
       dockerfile: Portfolio.Home/Dockerfile
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+
+  urlshortener:
+    image: urlshortener
+    build:
+      context: ../UrlShortener
+      dockerfile: ./UrlShortener/Dockerfile
+    environment:
+      - ASPNETCORE_HTTP_PORTS=8080
+
