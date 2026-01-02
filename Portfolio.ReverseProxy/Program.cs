@@ -1,0 +1,10 @@
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddLettuceEncrypt();
+builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
+WebApplication app = builder.Build();
+
+app.MapReverseProxy();
+
+await app.RunAsync();

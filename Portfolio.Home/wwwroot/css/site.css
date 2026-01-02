@@ -1,0 +1,184 @@
+:root {
+    --primary-yellow: #ffcb47;
+    --accent-yellow: #e6b83f;
+    --bg-black: #141204;
+    --secondary-bg: #1c1a06;
+    --text-light: #fffae3;
+    --text-muted: #8b939c;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-light);
+    font-family: 'JetBrains Mono', monospace;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-black) !important;
+    border-bottom: 2px solid var(--primary-yellow);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--primary-yellow) !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--accent-yellow) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--bg-black) 0%, #1c1a06 100%);
+    padding: 100px 0;
+    border-bottom: 1px solid #2a2810;
+}
+
+.hero-title {
+    color: var(--primary-yellow);
+    font-weight: 800;
+}
+
+/* Cards */
+.card {
+    background-color: #100f03;
+    border: 1px solid #252308;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-yellow);
+}
+
+.card-title {
+    color: var(--primary-yellow);
+}
+
+.card-title a {
+    color: inherit;
+}
+
+.card-title a:hover {
+    color: var(--accent-yellow);
+}
+
+/* Skill Card Enhancements */
+#skills .card {
+    background-color: #1a1807; /* Slightly lighter than the background for depth */
+    transition: transform 0.3s ease;
+}
+
+#skills .card:hover {
+    transform: translateY(-5px);
+    background-color: #22200a;
+}
+
+#skills .bi {
+    font-size: 1rem;
+}
+
+#skills .badge {
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+#skills .badge:hover {
+    background: var(--primary-yellow);
+    color: var(--bg-black) !important;
+}
+
+/* Badges */
+.badge-tech {
+    background-color: var(--primary-yellow);
+    color: var(--bg-black);
+    margin-right: 5px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+    color: var(--bg-black);
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    color: var(--bg-black);
+}
+
+.btn-outline-primary {
+    color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-yellow);
+    color: var(--bg-black);
+}
+
+/* Form Controls */
+.form-control {
+    background-color: #161405;
+    border: 1px solid #2a2810;
+    color: var(--text-light);
+}
+
+.form-control:focus {
+    background-color: #1d1b06;
+    border-color: var(--primary-yellow);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.25rem rgba(255, 203, 71, 0.25);
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-black);
+    border-top: 1px solid #252308;
+    padding: 40px 0;
+}
+
+/* Timeline */
+.timeline {
+    border-left: 2px solid var(--primary-yellow);
+    padding-left: 20px;
+    position: relative;
+}
+
+.timeline-item {
+    margin-bottom: 30px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-yellow);
+    border-radius: 50%;
+}
+
+.text-primary-yellow {
+    color: var(--primary-yellow) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.bg-primary-yellow {
+    background-color: var(--primary-yellow) !important;
+}
+
+.bg-dark {
+    background-color: var(--secondary-bg) !important;
+}
+
+.text-light {
+    color: var(--text-light) !important;
+}

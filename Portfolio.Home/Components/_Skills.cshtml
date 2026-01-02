@@ -1,0 +1,44 @@
+@model SkillsViewModel
+
+<!-- Skills Section -->
+<section id="skills" class="py-5 bg-dark">
+    <div class="container">
+        <h2 class="text-center mb-5 text-primary-yellow">TECHNICAL EXPERTISE</h2>
+        <div class="row g-4 justify-content-center">
+            @foreach (var group in Model.SkillGroups)
+            {
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4 text-center">
+                            <h4 class="card-title mb-4 border-bottom pb-2 border-secondary text-primary-yellow">
+                                @group.Title
+                            </h4>
+                            <div class="d-flex flex-column gap-3">
+                                @foreach (var skill in group.Skills)
+                                {
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary-yellow text-black rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 32px; height: 32px; flex-shrink: 0;">
+                                            <i class="bi @(skill.IconClass ?? "bi-check2")"></i>
+                                        </div>
+                                        <span class="text-light">@skill.Name</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <!-- Quick Keywords / Badges -->
+        <div class="text-center mt-5">
+            <p class="text-muted mb-3 small text-uppercase fw-bold">Additional Specializations</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                @foreach (var spec in Model.AdditionalSpecializations)
+                {
+                    <span class="badge rounded-pill border border-primary-yellow text-primary-yellow px-3 py-2">@spec</span>
+                }
+            </div>
+        </div>
+    </div>
+</section>

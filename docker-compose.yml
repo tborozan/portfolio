@@ -1,0 +1,12 @@
+services:
+  portfolio.reverseproxy:
+    image: portfolio.reverseproxy
+    build:
+      context: .
+      dockerfile: Portfolio.ReverseProxy/Dockerfile
+
+  portfolio.home:
+    image: portfolio.home
+    build:
+      context: .
+      dockerfile: Portfolio.Home/Dockerfile
