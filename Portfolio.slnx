@@ -2,6 +2,8 @@
   <Folder Name="/SolutionFiles/">
     <File Path=".gitignore" />
     <File Path="docker-compose.yml" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
   </Folder>
   <Project Path="Portfolio.Home/Portfolio.Home.csproj" />
   <Project Path="Portfolio.ReverseProxy/Portfolio.ReverseProxy.csproj" />
