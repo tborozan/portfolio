@@ -1,4 +1,4 @@
-name: Deploy Blazor WASM to GitHub Pages
+name: Deploy Portfolio.Home to GitHub Pages
 
 on:
   push:
@@ -10,10 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
     environment:
@@ -21,17 +17,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
+    - uses: actions/checkout@v4
 
-    - name: Setup .NET 10
-      uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 10.0.x
 
-    - name: Restore dependencies
+    - name: Restore
       run: dotnet restore "Portfolio.Home/Portfolio.Home.csproj"
 
     - name: Build
@@ -40,19 +32,27 @@ jobs:
     - name: Publish
       run: dotnet publish "Portfolio.Home/Portfolio.Home.csproj" --configuration Release --output "./publish" --no-restore
 
-    - name: Fix base href (if needed)
+    - name: 🚀 Auto-fix base href for project pages
+      id: repo-info
       run: |
-        # Update base href for project pages (uncomment and adjust if needed)
-        # sed -i 's|<base href="/" />|<base href="/repo-name/" />|g' ./publish/wwwroot/index.html
+        REPO_NAME=$(basename "${{ github.repository }}")
+        echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
         
-        # Create .nojekyll to skip Jekyll processing
+        sed -i "s|<base href=\"\/\" />|<base href=\"/${REPO_NAME}/\" />|g" ./publish/wwwroot/index.html
+        sed -i "s|<base href='\/' />|<base href=\"/${REPO_NAME}/\" />|g" ./publish/wwwroot/index.html
+        
+        echo "✅ Base href set to /${REPO_NAME}/"
+        echo "📁 Deploying from: ./publish/wwwroot"
+
+    - name: Add Pages files
+      run: |
         touch ./publish/wwwroot/.nojekyll
 
-    - name: Upload GitHub Pages artifact
+    - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
         path: './publish/wwwroot'
 
-    - name: Deploy to GitHub Pages
+    - name: Deploy
       id: deployment
       uses: actions/deploy-pages@v4
