@@ -31,19 +31,6 @@ jobs:
 
     - name: Publish
       run: dotnet publish "Portfolio.Home/Portfolio.Home.csproj" --configuration Release --output "./publish" --no-restore
-      
-    - name: 🧠 Smart base href (custom domain + project support)
-      id: basehref
-      run: |
-        REPO_NAME=$(basename "${{ github.repository }}")
-        
-        if [ -f "./publish/wwwroot/CNAME" ]; then
-          sed -i 's|<base href="[^"]*" />|<base href="/" />|g' ./publish/wwwroot/index.html
-          echo "✅ Custom domain: base href=/"
-        else
-          sed -i "s|<base href=\"\/\" />|<base href=\"/${REPO_NAME}/\" />|g" ./publish/wwwroot/index.html
-          echo "✅ Project site: base href=/${REPO_NAME}/"
-        fi
 
     - name: Add Pages files
       run: |
