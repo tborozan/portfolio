@@ -32,13 +32,13 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Restore dependencies
-      run: dotnet restore "src/MyBlazorApp/MyBlazorApp.csproj"
+      run: dotnet restore "Portfolio.Home/Portfolio.Home.csproj"
 
     - name: Build
-      run: dotnet build "src/MyBlazorApp/MyBlazorApp.csproj" --configuration Release --no-restore
+      run: dotnet build "Portfolio.Home/Portfolio.Home.csproj" --configuration Release --no-restore
 
     - name: Publish
-      run: dotnet publish "src/MyBlazorApp/MyBlazorApp.csproj" --configuration Release --output "./publish" --no-restore
+      run: dotnet publish "Portfolio.Home/Portfolio.Home.csproj" --configuration Release --output "./publish" --no-restore
 
     - name: Fix base href (if needed)
       run: |
