@@ -1,4 +1,7 @@
-@model ProjectItem
+@code {
+    [Parameter]
+    public ProjectItem Model { get; set; } = new();
+}
 
 <div class="col-md-4">
     <div class="card h-100">

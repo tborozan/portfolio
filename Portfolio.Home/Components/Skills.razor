@@ -1,4 +1,7 @@
-@model SkillsViewModel
+@code {
+    [Parameter]
+    public SkillsViewModel Model { get; set; } = new();
+}
 
 <!-- Skills Section -->
 <section id="skills" class="py-5 bg-dark">

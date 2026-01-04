@@ -1,19 +1,19 @@
-namespace Portfolio.Home.Pages;
+@page "/"
 
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Models;
+<PageTitle>Toni Borozan</PageTitle>
 
-public class IndexModel : PageModel
-{
-    public List<ProjectItem> DemoProjects { get; set; } = [];
+<Hero />
+<About Model="About" />
+<Skills Model="Skills" />
+<Projects Model="Projects" />
+<Contact />
 
-    public List<ProjectItem> ProfessionalProjects { get; set; } = [];
-
+@code {
+    public List<ProjectItem> Projects { get; set; } = [];
     public AboutInfo About { get; set; } = new();
-
     public SkillsViewModel Skills { get; set; } = new();
 
-    public void OnGet()
+    protected override void OnInitialized()
     {
         About = new AboutInfo
         {
@@ -81,7 +81,7 @@ public class IndexModel : PageModel
             }
         ];
         
-        ProfessionalProjects =
+        Projects =
         [
             new ProjectItem
             {
@@ -121,17 +121,6 @@ public class IndexModel : PageModel
                 Description = "A product configurator for Končar. The configurator allows users to configure electic motor parameters and generate a configuration file. My responsibility was to design and implement CI pipeline for automated build, code analysis and containerization.",
                 ProjectUrl = "https://koncar.hr/hr/mes/konfigurator-motor",
                 Technologies = ["Azure Pipelines", "Docker", "SonarQube Cloud", "Azure Container Registry", "Azure App Service"]
-            }
-        ];
-
-        DemoProjects =
-        [
-            new ProjectItem
-            {
-                Title = "Url Shortener",
-                Description = "A simple and minimal url shortening service.",
-                ProjectUrl = "share.borozan.dev",
-                Technologies = [".NET 10", "Razor Pages", "SQLite"]
             }
         ];
 

@@ -1,0 +1,17 @@
+@code {
+    [Parameter]
+    public List<ProjectItem> Model { get; set; } = [];
+}
+
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 text-primary-yellow">PROJECTS</h2>
+        <div class="row g-4">
+            @foreach (var project in Model)
+            {
+                <ProjectCard Model="project" />
+            }
+        </div>
+    </div>
+</section>
