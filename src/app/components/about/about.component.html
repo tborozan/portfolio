@@ -1,19 +1,38 @@
 <section id="about" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h2 class="text-primary-yellow mb-4">ABOUT ME</h2>
-                <p class="text-light">
-                    {{ model.bio }}
-                </p>
-                <div class="timeline mt-5">
-                    @for (item of model.timeline; track item.title) {
-                        <div class="timeline-item">
-                            <h3 class="h5 text-primary-yellow">{{ item.title }} - {{ item.company }}</h3>
-                            <p class="small text-muted">{{ item.period }}</p>
-                            <p class="text-light">{{ item.description }}</p>
+            <div class="col-lg-9 col-xl-8 mx-auto text-center">
+                <h2 class="text-primary-yellow mb-5 section-title">ABOUT ME</h2>
+                
+                <div class="terminal-window text-start">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot close"></span>
+                            <span class="terminal-dot minimize"></span>
+                            <span class="terminal-dot maximize"></span>
                         </div>
-                    }
+                        <div class="terminal-title">~/about/profile.md</div>
+                        <div></div>
+                    </div>
+                    <div class="terminal-body p-4">
+                        <p class="text-light fs-5 lh-lg mb-4 font-monospace">
+                            {{ model.bio }}
+                        </p>
+                        
+                        <div class="border-bottom border-secondary my-4"></div>
+                        
+                        <h3 class="h6 text-muted mb-4 font-monospace text-uppercase fw-bold select-none">> cat experience.log</h3>
+                        
+                        <div class="timeline">
+                            @for (item of model.timeline; track item.title) {
+                                <div class="timeline-item">
+                                    <h4 class="h6 text-primary-yellow font-monospace mb-1">{{ item.title }} - {{ item.company }}</h4>
+                                    <p class="small text-muted mb-2 font-monospace">{{ item.period }}</p>
+                                    <p class="text-light mb-0 lh-lg small">{{ item.description }}</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
