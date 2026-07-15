@@ -83,6 +83,16 @@ h1:focus {
     font-weight: 800;
 }
 
+.shell-prompt {
+    font-size: 0.875rem;
+}
+
+@media (max-width: 576px) {
+    .shell-prompt {
+        font-size: 0.725rem;
+    }
+}
+
 /* Terminal Card & Windows */
 .terminal-window {
     background-color: #100f03;
