@@ -1,8 +1,0 @@
-<Solution>
-  <Folder Name="/SolutionFiles/">
-    <File Path=".gitignore" />
-    <File Path="LICENSE" />
-    <File Path="README.md" />
-  </Folder>
-  <Project Path="Portfolio.Home/Portfolio.Home.csproj" />
-</Solution>

@@ -1,0 +1,25 @@
+<div class="card h-100 w-100">
+    <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+            <h3 class="card-title h5 mb-3">
+                @if (model.projectUrl) {
+                    <a [href]="model.projectUrl" 
+                       class="text-decoration-none stretched-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       [aria-label]="model.title + ' (opens in a new window)'">
+                        {{ model.title }} <i class="bi bi-box-arrow-up-right ms-1 small" aria-hidden="true"></i>
+                    </a>
+                } @else {
+                    {{ model.title }}
+                }
+            </h3>
+            <p class="card-text text-light">{{ model.description }}</p>
+        </div>
+        <div class="mt-4">
+            @for (tech of model.technologies; track tech) {
+                <span class="badge badge-tech mb-1 me-1">{{ tech }}</span>
+            }
+        </div>
+    </div>
+</div>

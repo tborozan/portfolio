@@ -1,0 +1,31 @@
+<section id="projects" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 text-primary-yellow">PROJECTS</h2>
+
+        <div class="swiper-outer">
+            <button class="swiper-nav-btn" (click)="slidePrev()" aria-label="Previous project">
+                <i class="bi bi-chevron-left" aria-hidden="true"></i>
+            </button>
+
+            <swiper-container #swiper
+                navigation="false"
+                pagination='{"clickable": true}'
+                grab-cursor="true"
+                loop="true"
+                slides-per-view="1"
+                space-between="24"
+                breakpoints='{"768": {"slidesPerView": 2}, "1200": {"slidesPerView": 3}}'>
+
+                @for (project of model; track project.title) {
+                    <swiper-slide>
+                        <app-project-card [model]="project" class="d-flex h-100 w-100" />
+                    </swiper-slide>
+                }
+            </swiper-container>
+
+            <button class="swiper-nav-btn" (click)="slideNext()" aria-label="Next project">
+                <i class="bi bi-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</section>

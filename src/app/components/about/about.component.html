@@ -1,0 +1,21 @@
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-primary-yellow mb-4">ABOUT ME</h2>
+                <p class="text-light">
+                    {{ model.bio }}
+                </p>
+                <div class="timeline mt-5">
+                    @for (item of model.timeline; track item.title) {
+                        <div class="timeline-item">
+                            <h3 class="h5 text-primary-yellow">{{ item.title }} - {{ item.company }}</h3>
+                            <p class="small text-muted">{{ item.period }}</p>
+                            <p class="text-light">{{ item.description }}</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

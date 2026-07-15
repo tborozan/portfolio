@@ -19,27 +19,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: actions/setup-dotnet@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        dotnet-version: 10.0.x
+        node-version: 20
+        cache: 'npm'
 
-    - name: Restore
-      run: dotnet restore "Portfolio.Home/Portfolio.Home.csproj"
+    - name: Install dependencies
+      run: npm ci
 
-    - name: Build
-      run: dotnet build "Portfolio.Home/Portfolio.Home.csproj" --configuration Release --no-restore
-
-    - name: Publish
-      run: dotnet publish "Portfolio.Home/Portfolio.Home.csproj" --configuration Release --output "./publish" --no-restore
+    - name: Build and Prerender
+      run: npm run build
 
     - name: Add Pages files
       run: |
-        touch ./publish/wwwroot/.nojekyll
+        touch ./dist/portfolio/browser/.nojekyll
+        cp ./dist/portfolio/browser/index.html ./dist/portfolio/browser/404.html
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './publish/wwwroot'
+        path: './dist/portfolio/browser'
 
     - name: Deploy
       id: deployment
